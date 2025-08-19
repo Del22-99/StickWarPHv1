@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="CapturePoint" type="Area2D"]
+monitoring = true
+monitorable = true
+script = ExtResource("res://scripts/CapturePoint.gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = CircleShape2D { radius = 40.0 }
+
+[ext_resource type="Script" path="res://scripts/CapturePoint.gd" id="1"]

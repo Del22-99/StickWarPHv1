@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="Unit" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("res://scripts/Unit.gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = CircleShape2D { radius = 10.0 }
+
+[ext_resource type="Script" path="res://scripts/Unit.gd" id="1"]

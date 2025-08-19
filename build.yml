@@ -1,0 +1,26 @@
+name: Build StickWarPHv1 APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: barichello/godot-ci:4.2.2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Export Android APK
+        run: |
+          mkdir -p build
+          godot --headless --export-release "Android" build/StickWarPHv1.apk
+
+      - name: Upload Artifact (APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: StickWarPHv1-Android
+          path: build/StickWarPHv1.apk
+          if-no-files-found: warn
