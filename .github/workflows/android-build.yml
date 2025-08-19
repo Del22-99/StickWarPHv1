@@ -15,8 +15,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Export Game
-      uses: barichello/godot-export@v5
+    - name: Set up Godot & Export
+      uses: barichello/godot-ci@v4
       with:
         version: 4.2.1   # Godot version
         export_path: build/
@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: android-apk
-        path: build/*.apkpk
+        path: build/*.apk
