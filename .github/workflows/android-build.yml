@@ -1,4 +1,4 @@
-name: Build Android
+name: Build Godot Android
 
 on:
   push:
@@ -15,19 +15,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Godot
-      uses: firebelley/setup-godot@v1
+    - name: Export Game
+      uses: barichello/godot-export@v5
       with:
-        version: '4.2.1'
-        export-templates: true
-
-    - name: Export Android
-      run: |
-        mkdir -p build
-        godot --headless --export-release "Android" build/game.apk
+        version: 4.2.1   # Godot version
+        export_path: build/
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: android-apk
-        path: build/game.apk
+        path: build/*.apkpk
